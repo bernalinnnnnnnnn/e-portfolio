@@ -1,0 +1,968 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bernalyn Benedicto</title>
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <style>
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+            font-family: 'Segoe UI', Tahoma, Geneva, Verdana, sans-serif;
+        }
+
+        :root {
+            --primary-purple: #7b68ee;
+            --light-purple: #e6e6fa;
+            --medium-purple: #9370db;
+            --dark-purple: #4b0082;
+            --accent-color: #d8bfd8;
+            --text-dark: #333;
+            --text-light: #555;
+            --white: #ffffff;
+            --shadow: 0 5px 15px rgba(0, 0, 0, 0.1);
+            --transition: all 0.3s ease;
+        }
+
+        body {
+            background-color: #f9f9ff;
+            color: var(--text-dark);
+            line-height: 1.6;
+        }
+
+        .container {
+            max-width: 1200px;
+            margin: 0 auto;
+            padding: 0 20px;
+        }
+
+        /* Header & Navigation */
+        header {
+            background: linear-gradient(135deg, var(--primary-purple), var(--dark-purple));
+            color: var(--white);
+            padding: 20px 0;
+            box-shadow: var(--shadow);
+            position: sticky;
+            top: 0;
+            z-index: 100;
+        }
+
+        .header-content {
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+        }
+
+        .logo {
+            font-size: 1.8rem;
+            font-weight: 700;
+            display: flex;
+            align-items: center;
+        }
+
+        .logo i {
+            margin-right: 10px;
+            color: var(--accent-color);
+        }
+
+        nav ul {
+            display: flex;
+            list-style: none;
+        }
+
+        nav ul li {
+            margin-left: 25px;
+        }
+
+        nav ul li a {
+            color: var(--white);
+            text-decoration: none;
+            font-weight: 500;
+            transition: var(--transition);
+            padding: 5px 10px;
+            border-radius: 4px;
+        }
+
+        nav ul li a:hover,
+        nav ul li a.active {
+            background-color: rgba(255, 255, 255, 0.2);
+        }
+
+        /* Hero Section */
+        .hero {
+            padding: 80px 0 60px;
+            background-color: var(--light-purple);
+            text-align: center;
+            border-bottom: 1px solid rgba(123, 104, 238, 0.1);
+        }
+
+        .hero h1 {
+            font-size: 2.8rem;
+            margin-bottom: 15px;
+            color: var(--dark-purple);
+        }
+
+        .hero p {
+            font-size: 1.2rem;
+            max-width: 700px;
+            margin: 0 auto 30px;
+            color: var(--text-light);
+        }
+
+        .profile-img {
+            width: 180px;
+            height: 180px;
+            border-radius: 50%;
+            object-fit: cover;
+            border: 8px solid var(--white);
+            box-shadow: var(--shadow);
+            margin-bottom: 20px;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 60px 0;
+        }
+
+        .section-title {
+            text-align: center;
+            margin-bottom: 50px;
+            position: relative;
+        }
+
+        .section-title h2 {
+            font-size: 2.2rem;
+            color: var(--dark-purple);
+            display: inline-block;
+            padding-bottom: 15px;
+        }
+
+        .section-title h2::after {
+            content: '';
+            position: absolute;
+            width: 80px;
+            height: 4px;
+            background-color: var(--medium-purple);
+            bottom: 0;
+            left: 50%;
+            transform: translateX(-50%);
+            border-radius: 2px;
+        }
+
+        /* About Section */
+        .about-content {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+        }
+
+        .about-text {
+            flex: 1;
+        }
+
+        .about-text h3 {
+            color: var(--primary-purple);
+            margin-bottom: 20px;
+            font-size: 1.8rem;
+        }
+
+        .about-text p {
+            margin-bottom: 15px;
+            color: var(--text-light);
+        }
+
+        .info-list {
+            list-style: none;
+            margin-top: 20px;
+        }
+
+        .info-list li {
+            margin-bottom: 10px;
+            display: flex;
+            align-items: center;
+        }
+
+        .info-list i {
+            color: var(--primary-purple);
+            margin-right: 10px;
+            width: 20px;
+        }
+
+        /* Certificate Course Section */
+        .course-section {
+            margin-bottom: 60px;
+            background-color: var(--white);
+            border-radius: 15px;
+            overflow: hidden;
+            box-shadow: var(--shadow);
+        }
+
+        .course-header {
+            background: linear-gradient(135deg, #7b68ee, #9370db);
+            color: white;
+            padding: 25px 30px;
+        }
+
+        .course-header h3 {
+            font-size: 1.5rem;
+            margin-bottom: 10px;
+        }
+
+        .course-header p {
+            opacity: 0.9;
+            font-size: 0.95rem;
+        }
+
+        .course-content {
+            padding: 30px;
+        }
+
+        /* Certificate Gallery */
+        .certificate-gallery {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(280px, 1fr));
+            gap: 25px;
+            margin-bottom: 30px;
+        }
+
+        .certificate-item {
+            background-color: var(--light-purple);
+            border-radius: 10px;
+            overflow: hidden;
+            transition: var(--transition);
+            cursor: pointer;
+        }
+
+        .certificate-item:hover {
+            transform: translateY(-5px);
+            box-shadow: 0 10px 25px rgba(0, 0, 0, 0.15);
+        }
+
+        .certificate-thumb {
+            width: 100%;
+            height: 150px;
+            object-fit: contain;
+            background-color: white;
+            padding: 15px;
+            border-bottom: 2px solid var(--accent-color);
+        }
+
+        .certificate-info {
+            padding: 20px;
+            text-align: center;
+        }
+
+        .certificate-info h4 {
+            color: var(--dark-purple);
+            margin-bottom: 8px;
+            font-size: 1.1rem;
+        }
+
+        .certificate-info p {
+            color: var(--text-light);
+            font-size: 0.9rem;
+            margin-bottom: 10px;
+        }
+
+        .cert-type {
+            display: inline-block;
+            padding: 3px 10px;
+            background-color: var(--primary-purple);
+            color: white;
+            border-radius: 12px;
+            font-size: 0.8rem;
+            font-weight: 600;
+        }
+
+        /* Skills List */
+        .skills-list {
+            background-color: #f8f8ff;
+            padding: 25px;
+            border-radius: 10px;
+            margin-top: 20px;
+        }
+
+        .skills-list h4 {
+            color: var(--dark-purple);
+            margin-bottom: 15px;
+            display: flex;
+            align-items: center;
+            gap: 10px;
+        }
+
+        .skills-list ul {
+            list-style-type: none;
+            columns: 2;
+        }
+
+        .skills-list li {
+            margin-bottom: 8px;
+            padding-left: 20px;
+            position: relative;
+            color: var(--text-light);
+        }
+
+        .skills-list li:before {
+            content: "✓";
+            color: var(--primary-purple);
+            position: absolute;
+            left: 0;
+            font-weight: bold;
+        }
+
+        /* Lightbox Modal */
+        .lightbox-modal {
+            display: none;
+            position: fixed;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            background-color: rgba(0, 0, 0, 0.9);
+            z-index: 1000;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .lightbox-content {
+            max-width: 90%;
+            max-height: 90%;
+            text-align: center;
+        }
+
+        .lightbox-img {
+            max-width: 100%;
+            max-height: 70vh;
+            object-fit: contain;
+            border-radius: 8px;
+            box-shadow: 0 10px 30px rgba(0, 0, 0, 0.3);
+        }
+
+        .lightbox-info {
+            color: white;
+            margin-top: 20px;
+        }
+
+        .lightbox-info h3 {
+            margin-bottom: 10px;
+        }
+
+        .lightbox-info p {
+            opacity: 0.8;
+        }
+
+        .close-btn {
+            position: absolute;
+            top: 20px;
+            right: 20px;
+            color: white;
+            font-size: 2rem;
+            cursor: pointer;
+            background: none;
+            border: none;
+        }
+
+        /* Contact & Socials Section */
+        .socials-grid {
+            display: grid;
+            grid-template-columns: repeat(auto-fill, minmax(250px, 1fr));
+            gap: 25px;
+            margin-top: 30px;
+        }
+
+        .social-card {
+            background-color: var(--white);
+            border-radius: 10px;
+            padding: 25px;
+            display: flex;
+            align-items: center;
+            box-shadow: var(--shadow);
+            transition: var(--transition);
+            text-decoration: none;
+            color: var(--text-dark);
+        }
+
+        .social-card:hover {
+            transform: translateY(-5px);
+            background-color: var(--light-purple);
+        }
+
+        .social-icon {
+            width: 50px;
+            height: 50px;
+            border-radius: 50%;
+            background-color: var(--light-purple);
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            margin-right: 20px;
+            font-size: 1.5rem;
+            color: var(--primary-purple);
+        }
+
+        .social-info h3 {
+            font-size: 1.1rem;
+            margin-bottom: 5px;
+            color: var(--dark-purple);
+        }
+
+        .social-info p {
+            font-size: 0.9rem;
+            color: var(--text-light);
+        }
+
+        /* Contact Info Cards */
+        .contact-info {
+            display: flex;
+            flex-wrap: wrap;
+            justify-content: center;
+            gap: 30px;
+            margin-top: 40px;
+        }
+
+        .contact-item {
+            background-color: var(--white);
+            padding: 25px;
+            border-radius: 10px;
+            text-align: center;
+            box-shadow: var(--shadow);
+            flex: 1;
+            min-width: 250px;
+            max-width: 300px;
+            transition: var(--transition);
+        }
+
+        .contact-item:hover {
+            background-color: var(--light-purple);
+        }
+
+        .contact-item i {
+            font-size: 2rem;
+            color: var(--primary-purple);
+            margin-bottom: 15px;
+        }
+
+        .contact-item h3 {
+            margin-bottom: 10px;
+            color: var(--dark-purple);
+        }
+
+        /* Footer */
+        footer {
+            background-color: var(--dark-purple);
+            color: var(--white);
+            padding: 40px 0 20px;
+            text-align: center;
+        }
+
+        .footer-content {
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+            margin-bottom: 30px;
+        }
+
+        .social-links {
+            display: flex;
+            gap: 15px;
+            margin-top: 20px;
+            flex-wrap: wrap;
+            justify-content: center;
+        }
+
+        .social-links a {
+            color: var(--white);
+            background-color: var(--primary-purple);
+            width: 40px;
+            height: 40px;
+            border-radius: 50%;
+            display: flex;
+            align-items: center;
+            justify-content: center;
+            text-decoration: none;
+            transition: var(--transition);
+        }
+
+        .social-links a:hover {
+            transform: translateY(-5px);
+            background-color: var(--accent-color);
+            color: var(--dark-purple);
+        }
+
+        .copyright {
+            padding-top: 20px;
+            border-top: 1px solid rgba(255, 255, 255, 0.1);
+            font-size: 0.9rem;
+            color: var(--accent-color);
+        }
+
+        /* Responsive Design */
+        @media (max-width: 768px) {
+            .header-content {
+                flex-direction: column;
+                text-align: center;
+            }
+
+            nav ul {
+                margin-top: 20px;
+                flex-wrap: wrap;
+                justify-content: center;
+            }
+
+            nav ul li {
+                margin: 5px 10px;
+            }
+
+            .hero h1 {
+                font-size: 2.2rem;
+            }
+
+            .about-content {
+                flex-direction: column;
+            }
+
+            .certificate-gallery {
+                grid-template-columns: 1fr;
+            }
+
+            .socials-grid {
+                grid-template-columns: 1fr;
+            }
+
+            .skills-list ul {
+                columns: 1;
+            }
+        }
+    </style>
+</head>
+
+<body>
+    <!-- Header & Navigation -->
+    <header>
+        <div class="container">
+            <div class="header-content">
+                <div class="logo">
+                    <i class="fas fa-certificate"></i>
+                    Bernalyn M. Benedicto
+                </div>
+                <nav>
+                    <ul>
+                        <li><a href="#home" class="active">Home</a></li>
+                        <li><a href="#about">About</a></li>
+                        <li><a href="#certificates">Certificates</a></li>
+                        <li><a href="#contact">Contact</a></li>
+                    </ul>
+                </nav>
+            </div>
+        </div>
+    </header>
+
+    <!-- Hero Section -->
+    <section id="home" class="hero">
+        <div class="container">
+            <img src="assets/berna.jpg" alt="Bernalyn Benedicto" class="profile-img">
+            <h1>Bernalyn Benedicto</h1>
+            <p>Digital Learning Portfolio | Showcasing Certificates & Badges </p>
+            <p>This portfolio contains certificates and badges acquired during online courses as part of course
+                requirements. It showcases my commitment to continuous learning and professional development.</p>
+        </div>
+    </section>
+
+    <!-- About Section -->
+    <section id="about">
+        <div class="container">
+            <div class="section-title">
+                <h2>About Me</h2>
+            </div>
+            <div class="about-content">
+                <div class="about-text">
+                    <h3>Hello, I'm Bernalyn</h3>
+                    <p>I am a dedicated student with a passion for continuous learning and skill development. Currently
+                        pursuing my degree, I actively participate in online courses to expand my knowledge and
+                        expertise in various domains.</p>
+                    <p>This e-portfolio serves as a collection of my academic achievements, specifically the
+                        certificates and badges I've earned through online courses required by my instructor. Each
+                        certificate represents a milestone in my learning journey.</p>
+                    <p>I believe in the power of lifelong learning and constantly seek opportunities to grow both
+                        personally and professionally.</p>
+
+                    <ul class="info-list">
+                        <li><i class="fas fa-user"></i> <strong>Full Name:</strong> Bernalyn Mercurio Benedicto</li>
+                        <li><i class="fas fa-graduation-cap"></i> <strong>Education:</strong> 4th Year BSIT Student,
+                            Majoring in Web Technologies and Management</li>
+                        <li><i class="fas fa-map-marker-alt"></i> <strong>Location:</strong> Subagan, Licuan-Baay, Abra,
+                            Philippines</li>
+                        <li><i class="fas fa-envelope"></i> <strong>Email:</strong> benedictobernalyn52@gmail.com</li>
+                        <li><i class="fas fa-phone"></i> <strong>Phone:</strong> +63 970 833 5852</li>
+                        <li><i class="fas fa-book"></i> <strong>Interests:</strong> Technology, Digital Skills,
+                            Continuous Learning</li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Certificates Section -->
+    <section id="certificates">
+        <div class="container">
+            <div class="section-title">
+                <h2>My Certificates & Badges</h2>
+            </div>
+
+            <!-- Apply AI: Update Your Resume Course -->
+            <div class="course-section">
+                <div class="course-header">
+                    <h3><i class="fas fa-file-alt"></i> Apply AI: Update Your Resume</h3>
+                    <p><i class="fas fa-network-wired"></i> Cisco Networking Academy | <i
+                            class="far fa-calendar-alt"></i> Completed: January 10, 2026</p>
+                </div>
+
+                <div class="course-content">
+                    <div class="certificate-gallery">
+                        <!-- Badge -->
+                        <div class="certificate-item" data-image="assets/apply-ai-update-your-resume.png"
+                            data-title="Cisco Networking Academy Badge">
+                            <img src="assets/apply-ai-update-your-resume.png" alt="Badge" class="certificate-thumb">
+                            <div class="certificate-info">
+                                <h4>Cisco Networking Academy Badge</h4>
+                                <span class="cert-type">Badge</span>
+                            </div>
+                        </div>
+
+                        <!-- Certificate 1 -->
+                        <div class="certificate-item" data-image="assets/certificate-of-completion.png"
+                            data-title="Certificate of Course Completion">
+                            <img src="assets/certificate-of-completion.png" alt="Certificate 1"
+                                class="certificate-thumb">
+                            <div class="certificate-info">
+                                <h4>Certificate of Course Completion</h4>
+                                <span class="cert-type">Certificate</span>
+                            </div>
+                        </div>
+
+                        <!-- Certificate 2 -->
+                        <div class="certificate-item" data-image="assets/update-your-resume.png"
+                            data-title="Apply AI: Update Your Resume Certificate">
+                            <img src="assets/update-your-resume.png" alt="Certificate 2"
+                                class="certificate-thumb">
+                            <div class="certificate-info">
+                                <h4>Apply AI: Update Your Resume Certificate</h4>
+                                <span class="cert-type">Certificate</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skills-list">
+                        <h4><i class="fas fa-tasks"></i> Skills Acquired in This Course:</h4>
+                        <ul>
+                            <li>Identify and redact private information in resumes before using public AI tools</li>
+                            <li>Select appropriate AI tools and workflows balancing privacy, accuracy, and speed</li>
+                            <li>Extract project accomplishments and metadata from source documents</li>
+                            <li>Synthesize concise, evidence-based bullet points for resumes</li>
+                            <li>Conduct LLM self-checks and human validation to ensure factual accuracy</li>
+                            <li>Compile and categorize skills into ATS-friendly formats</li>
+                            <li>Apply styling using word processor or HTML templates to produce PDFs</li>
+                            <li>Customize resumes line-by-line to match specific job requirements</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- AI Fundamentals with IBM SkillsBuild -->
+            <div class="course-section">
+                <div class="course-header">
+                    <h3><i class="fas fa-brain"></i> AI Fundamentals with IBM SkillsBuild</h3>
+                    <p><i class="fas fa-network-wired"></i> Cisco Networking Academy & IBM SkillsBuild | <i
+                            class="far fa-calendar-alt"></i> Completed: January 09, 2026</p>
+                </div>
+
+                <div class="course-content">
+                    <div class="certificate-gallery">
+                        <!-- Badge 1 -->
+                        <div class="certificate-item" data-image="assets/ai-fundamentals-with-ibm-skillsbuild.png"
+                            data-title="AI Fundamentals IBM SkillsBuild Badge">
+                            <img src="assets/ai-fundamentals-with-ibm-skillsbuild.png" alt="Badge 1"
+                                class="certificate-thumb">
+                            <div class="certificate-info">
+                                <h4>AI Fundamentals IBM SkillsBuild Badge</h4>
+                                <span class="cert-type">Badge</span>
+                            </div>
+                        </div>
+
+                        <!-- Certificate 1 -->
+                        <div class="certificate-item" data-image="assets/ai-fundamentals-with-ibm-skillsbuild2.png"
+                            data-title="AI Fundamentals with IBM SkiilsBuild Certificate">
+                            <img src="assets/ai-fundamentals-with-ibm-skillsbuild2.png" alt="Certificate 1"
+                                class="certificate-thumb">
+                            <div class="certificate-info">
+                                <h4>AI Fundamentals with IBM SkiilsBuild Certificate</h4>
+                                <span class="cert-type">Certificate</span>
+                            </div>
+                        </div>
+
+                        <!-- Certificate 2 -->
+                        <div class="certificate-item" data-image="assets/artificial-intelligence-fundamentals2.png"
+                            data-title="Artificial Intelligence Fundamentals Certificate">
+                            <img src="assets/artificial-intelligence-fundamentals2.png" alt="Certificate 2"
+                                class="certificate-thumb">
+                            <div class="certificate-info">
+                                <h4>Artificial Intelligence Fundamentals Certificate</h4>
+                                <span class="cert-type">Certificate</span>
+                            </div>
+                        </div>
+
+                        <!-- Badge 2 -->
+                        <div class="certificate-item" data-image="assets/artificial-intelligence-fundamentals.png"
+                            data-title="Artificial Intelligence Fundamentals Badge">
+                            <img src="assets/artificial-intelligence-fundamentals.png" alt="Badge 2"
+                                class="certificate-thumb">
+                            <div class="certificate-info">
+                                <h4>Artificial Intelligence Fundamentals Badge</h4>
+                                <span class="cert-type">Badge</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skills-list">
+                        <h4><i class="fas fa-tasks"></i> Skills Acquired in This Course:</h4>
+                        <ul>
+                            <li>Understanding of AI concepts, machine learning, and neural networks</li>
+                            <li>Knowledge of IBM's AI tools and platforms</li>
+                            <li>Ethical considerations in AI development</li>
+                            <li>Real-world applications of artificial intelligence</li>
+                            <li>Data preparation and preprocessing for AI models</li>
+                            <li>AI model evaluation and deployment strategies</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+
+            <!-- Apply AI: Analyze Customer Reviews -->
+            <div class="course-section">
+                <div class="course-header">
+                    <h3><i class="fas fa-robot"></i> Apply AI: Analyze Customer Reviews</h3>
+                    <p><i class="fas fa-network-wired"></i> Cisco Networking Academy | <i
+                            class="far fa-calendar-alt"></i> Completed: January 10, 2026</p>
+                </div>
+
+                <div class="course-content">
+                    <div class="certificate-gallery">
+                        <!-- Badge -->
+                        <div class="certificate-item" data-image="assets/apply-ai-analyze-customer-reviews.png"
+                            data-title="Cisco Networking Academy Badge">
+                            <img src="assets/apply-ai-analyze-customer-reviews.png" alt="Badge"
+                                class="certificate-thumb">
+                            <div class="certificate-info">
+                                <h4>Cisco Networking Academy Badge</h4>
+                                <span class="cert-type">Badge</span>
+                            </div>
+                        </div>
+
+                        <!-- Certificate 1 -->
+                        <div class="certificate-item" data-image="assets/Certificate of Course Completion.png"
+                            data-title="Certificate of Course Completion">
+                            <img src="assets/Certificate of Course Completion.png" alt="Certificate 1"
+                                class="certificate-thumb">
+                            <div class="certificate-info">
+                                <h4>Certificate of Course Completion</h4>
+                                <span class="cert-type">Certificate</span>
+                            </div>
+                        </div>
+
+                        <!-- Certificate 2 -->
+                        <div class="certificate-item" data-image="assets/Apply AI_Analyze Customer Reviews.png"
+                            data-title="Apply AI: Analyze Customer Reviews Certificate">
+                            <img src="assets/Apply AI_Analyze Customer Reviews.png" alt="Certificate 2"
+                                class="certificate-thumb">
+                            <div class="certificate-info">
+                                <h4>Apply AI: Analyze Customer Reviews Certificate</h4>
+                                <span class="cert-type">Certificate</span>
+                            </div>
+                        </div>
+                    </div>
+
+                    <div class="skills-list">
+                        <h4><i class="fas fa-tasks"></i> Skills Acquired in This Course:</h4>
+                        <ul>
+                            <li>Choose the right AI or non-AI tool for each task</li>
+                            <li>Process tabular data with LLMs and spreadsheet apps</li>
+                            <li>Format tabular data for transfer between chatbot and spreadsheet</li>
+                            <li>Prompt chatbots to write and run code for data processing</li>
+                            <li>Write complex spreadsheet formulas with AI assistance</li>
+                            <li>Include the "human in the loop" for final decisions</li>
+                        </ul>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- GLOBAL MODAL -->
+    <div class="lightbox-modal" id="lightboxModal">
+        <button class="close-btn" id="closeLightbox">&times;</button>
+        <div class="lightbox-content">
+            <img id="lightboxImage" class="lightbox-img">
+            <div class="lightbox-info">
+                <h3 id="lightboxTitle"></h3>
+                <!-- <p>Click outside or press ESC to close</p> -->
+            </div>
+        </div>
+    </div>
+
+    <!-- Contact Section -->
+    <section id="contact">
+        <div class="container">
+            <div class="section-title">
+                <h2>Contact Information</h2>
+            </div>
+            <div class="contact-info">
+                <div class="contact-item">
+                    <i class="fas fa-envelope"></i>
+                    <h3>Primary Email</h3>
+                    <p>benedictobernalyn52@gmail.com</p>
+                    <p>For all inquiries</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-phone"></i>
+                    <h3>Phone Number</h3>
+                    <p>+63 970 833 5852</p>
+                    <p>Available for calls</p>
+                </div>
+                <div class="contact-item">
+                    <i class="fas fa-map-marker-alt"></i>
+                    <h3>Location</h3>
+                    <p>Subagan, Licuan-Baay</p>
+                    <p>Abra, Philippines</p>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer -->
+    <footer>
+        <div class="container">
+            <div class="footer-content">
+                <div class="logo">
+                    <i class="fas fa-certificate"></i>
+                    Bernalyn's Learning Portfolio
+                </div>
+                <p>A collection of certificates and badges earned through online course requirements</p>
+            </div>
+            <div class="copyright">
+                <p>&copy; 2026 Bernalyn Benedicto. All Rights Reserved. | This portfolio is for academic purposes only.
+                </p>
+                <p style="margin-top: 5px;">Subagan, Licuan-Baay, Abra, Philippines</p>
+            </div>
+        </div>
+    </footer>
+
+    <script>
+        // Smooth scrolling for navigation links
+        document.querySelectorAll('nav a').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+
+                const targetId = this.getAttribute('href');
+                const targetSection = document.querySelector(targetId);
+
+                window.scrollTo({
+                    top: targetSection.offsetTop - 80,
+                    behavior: 'smooth'
+                });
+
+                document.querySelectorAll('nav a').forEach(link => {
+                    link.classList.remove('active');
+                });
+                this.classList.add('active');
+            });
+        });
+
+        // Update active nav link on scroll
+        window.addEventListener('scroll', function () {
+            let current = '';
+            const sections = document.querySelectorAll('section');
+
+            sections.forEach(section => {
+                const sectionTop = section.offsetTop;
+                if (scrollY >= sectionTop - 100) {
+                    current = section.getAttribute('id');
+                }
+            });
+
+            document.querySelectorAll('nav a').forEach(link => {
+                link.classList.remove('active');
+                if (link.getAttribute('href') === `#${current}`) {
+                    link.classList.add('active');
+                }
+            });
+        });
+
+        // =========================
+        // LIGHTBOX / MODAL (FIXED)
+        // =========================
+        const modal = document.getElementById('lightboxModal');
+        const img = document.getElementById('lightboxImage');
+        const title = document.getElementById('lightboxTitle');
+        const closeBtn = document.getElementById('closeLightbox');
+
+        document.querySelectorAll('.certificate-item').forEach(item => {
+            item.addEventListener('click', () => {
+                const imageSrc = item.getAttribute('data-image');
+                const imageTitle = item.getAttribute('data-title');
+
+                img.src = imageSrc;
+                title.textContent = imageTitle;
+
+                modal.style.display = 'flex';
+                document.body.style.overflow = 'hidden';
+            });
+        });
+
+        closeBtn.addEventListener('click', closeModal);
+
+        modal.addEventListener('click', e => {
+            if (!e.target.closest('.lightbox-content')) {
+                closeModal();
+            }
+        });
+
+        document.addEventListener('keydown', e => {
+            if (e.key === 'Escape' && modal.style.display === 'flex') {
+                closeModal();
+            }
+        });
+
+        function closeModal() {
+            modal.style.display = 'none';
+            img.src = '';
+            document.body.style.overflow = 'auto';
+        }
+
+        // Hover effects (optional but kept)
+        document.querySelectorAll('.certificate-item').forEach(card => {
+            card.addEventListener('mouseenter', function () {
+                this.style.transform = 'translateY(-5px)';
+            });
+
+            card.addEventListener('mouseleave', function () {
+                this.style.transform = 'translateY(0)';
+            });
+        });
+
+        document.querySelectorAll('.contact-item').forEach(item => {
+            item.addEventListener('mouseenter', function () {
+                this.style.backgroundColor = 'var(--light-purple)';
+            });
+
+            item.addEventListener('mouseleave', function () {
+                this.style.backgroundColor = 'var(--white)';
+            });
+        });
+    </script>
+
+</body>
+
+</html>
